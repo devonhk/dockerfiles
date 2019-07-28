@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python
+
+    steps:
+      - checkout
+      - setup_remote_docker
+
+      - run:
+          name: Build and publish docker images
+          command: |
+            echo $DOCKER_PASSWORD | docker login -u pydo --password-stdin 
+            bash build-all.sh
+
+      - run:
+          name: Print the Current Time
+          command: date

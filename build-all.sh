@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 for subproject in $(find . -name 'Dockerfile' | sed 's|./||')
 do
